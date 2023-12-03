@@ -7,7 +7,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   return (
     <NextUIProvider navigate={router.push}>
-      <NextThemesProvider attribute="class">{children}</NextThemesProvider>
+      <NextThemesProvider
+        attribute="class"
+        enableSystem={false}
+      >
+        {children}
+      </NextThemesProvider>
     </NextUIProvider>
   );
 }
