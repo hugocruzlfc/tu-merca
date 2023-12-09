@@ -15,6 +15,9 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      textColor: {
+        preferredColor: "#FFA500",
+      },
     },
   },
   darkMode: "class",
@@ -25,12 +28,14 @@ const config: Config = {
         light: {
           colors: {
             primary: "#FFA500",
+            secondary: "#050404",
             default: "transparent",
           },
         },
         dark: {
           colors: {
             primary: "#FFA500",
+            secondary: "#FCF9F9",
             default: "transparent",
           },
         },

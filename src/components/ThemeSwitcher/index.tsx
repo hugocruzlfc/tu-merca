@@ -30,9 +30,9 @@ export function ThemeSwitcher() {
   return (
     <div className="flex gap-4 items-center">
       <Switch
-        className="rounded-full border-slate-300 border-1 bg-slate-950"
+        className="rounded-full border-slate-300 border-1 bg-slate-50"
         defaultSelected={resolvedTheme === "dark"}
-        size="lg"
+        size="md"
         color="primary"
         onChange={handleOnChange}
         thumbIcon={({ isSelected, className }) =>

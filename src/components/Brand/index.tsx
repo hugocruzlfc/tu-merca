@@ -1,10 +1,18 @@
 import React from "react";
 import Image from "next/image";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+} from "@nextui-org/react";
 
 const IMAGE_ALT = "Tu Merca";
 export const Brand: React.FC = () => {
   return (
-    <>
+    <Link href="/">
       <Image
         src="/logos/brand-dark.png"
         alt={IMAGE_ALT}
@@ -21,6 +29,6 @@ export const Brand: React.FC = () => {
         height={100}
         priority
       />
-    </>
+    </Link>
   );
 };
