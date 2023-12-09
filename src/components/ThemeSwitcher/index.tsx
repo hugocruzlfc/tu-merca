@@ -1,8 +1,8 @@
 "use client";
 import { useTheme } from "next-themes";
 import { Switch } from "@nextui-org/react";
-import { MoonIcon } from "./MoonIcon";
-import { SunIcon } from "./SunIcon";
+import { MoonIcon } from "../Icons/MoonIcon";
+import { SunIcon } from "../Icons/SunIcon";
 import { useEffect, useState } from "react";
 
 export function ThemeSwitcher() {
@@ -30,9 +30,10 @@ export function ThemeSwitcher() {
   return (
     <div className="flex gap-4 items-center">
       <Switch
+        className="rounded-full border-slate-300 border-1 bg-slate-950"
         defaultSelected={resolvedTheme === "dark"}
         size="lg"
-        color="secondary"
+        color="primary"
         onChange={handleOnChange}
         thumbIcon={({ isSelected, className }) =>
           isSelected ? (

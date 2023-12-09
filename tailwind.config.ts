@@ -18,6 +18,25 @@ const config: Config = {
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      addCommonColors: true,
+      themes: {
+        light: {
+          colors: {
+            primary: "#FFA500",
+            default: "transparent",
+          },
+        },
+        dark: {
+          colors: {
+            primary: "#FFA500",
+            default: "transparent",
+          },
+        },
+      },
+    }),
+  ],
 };
+
 export default config;
