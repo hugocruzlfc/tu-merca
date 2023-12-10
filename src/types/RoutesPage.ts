@@ -3,4 +3,5 @@ export enum RoutesPage {
   HOME = "/",
   LOGIN = "/login",
   PROFILE = "/profile",
+  FAQ = "/faq",
 }
