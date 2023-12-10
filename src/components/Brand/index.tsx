@@ -1,13 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  Button,
-} from "@nextui-org/react";
+import { Link } from "@nextui-org/react";
 
 const IMAGE_ALT = "Tu Merca";
 export const Brand: React.FC = () => {

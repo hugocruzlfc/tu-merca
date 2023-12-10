@@ -20,8 +20,11 @@ import { ThemeSwitcher } from "../ThemeSwitcher";
 import { Search } from "../Search";
 import { RoutesPage } from "@/types";
 import { MENU_ITEMS } from "@/constants";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 export const NavBar: React.FC = () => {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -92,16 +95,12 @@ export const NavBar: React.FC = () => {
         {MENU_ITEMS.map((menuItem, index) => (
           <NavbarMenuItem key={`${menuItem.label}-${index}`}>
             <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === MENU_ITEMS.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              className="w-full"
+              color="secondary"
+              className={clsx("w-full", {
+                "text-blue-600": pathname === menuItem.href,
+              })}
               href={menuItem.href}
-              size="lg"
+              size="sm"
             >
               {menuItem.label}
             </Link>
