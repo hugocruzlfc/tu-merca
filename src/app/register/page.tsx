@@ -1,8 +1,12 @@
 import { NextPage } from "next";
 
-export interface PageProps {}
+import type { Metadata } from "next";
 
-const RegisterPage: NextPage<PageProps> = ({}) => {
+export const metadata: Metadata = {
+  title: "Register",
+};
+
+const RegisterPage: NextPage = () => {
   return (
     <div className="flex items-center justify-center m-20">
       <p>

@@ -7,5 +7,6 @@ export * from "./Forms";
 export * from "./Icons";
 export * from "./Input";
 export * from "./NavBar";
+export * from "./Profile";
 export * from "./Search";
 export * from "./ThemeSwitcher";
