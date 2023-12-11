@@ -5,12 +5,12 @@ import Link from "next/link";
 
 export const LoginButton = () => {
   return (
-    <Link
+    <button
       style={{ marginRight: 10 }}
-      href="/login"
+      onClick={() => signIn()}
     >
       Sign in
-    </Link>
+    </button>
   );
 };
 
