@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build": "next build",
     "dev": "next dev",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "husky install"
+    "postinstall": "husky install && prisma generate"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
