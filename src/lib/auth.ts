@@ -23,20 +23,25 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const user = await prisma.user.findUnique({
+        const userFound = await prisma.user.findUnique({
           where: {
             email: credentials.email,
           },
         });
 
-        if (!user || !(await compare(credentials.password, user.password))) {
-          return null;
-        }
+        if (!userFound) throw new Error("Usuario no encontrado");
+
+        const matchPassword = await compare(
+          credentials.password,
+          userFound.password!
+        );
+
+        if (!matchPassword) throw new Error("Contraseña incorrecta");
 
         return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
+          id: userFound.id,
+          email: userFound.email,
+          username: userFound.username,
           randomKey: "Hey cool",
         };
       },

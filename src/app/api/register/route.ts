@@ -4,16 +4,47 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { name, email, password } = (await req.json()) as {
-      name: string;
-      email: string;
-      password: string;
-    };
+    const { username, email, password } = await req.json();
+
+    const userFound = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    if (userFound) {
+      return NextResponse.json(
+        {
+          message: "El correo electrónico ya existe",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const usernameFound = await prisma.user.findUnique({
+      where: {
+        username,
+      },
+    });
+
+    if (usernameFound) {
+      return NextResponse.json(
+        {
+          message: "username already exists",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
     const hashed_password = await hash(password, 12);
 
     const user = await prisma.user.create({
       data: {
-        name,
+        username,
         email: email.toLowerCase(),
         password: hashed_password,
       },
@@ -21,7 +52,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       user: {
-        name: user.name,
+        username: user.username,
         email: user.email,
       },
     });
