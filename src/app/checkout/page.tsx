@@ -1,4 +1,9 @@
 import { NextPage } from "next";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Checkout",
+};
 
 const Page: NextPage = () => {
   return (
