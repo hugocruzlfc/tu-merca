@@ -57,7 +57,7 @@ export const NavBar: React.FC = () => {
       >
         <NavbarItem className="hidden sm:flex">
           <Link
-            href={RoutesPage.LOGIN}
+            href={session ? RoutesPage.PROFILE : RoutesPage.LOGIN}
             color="secondary"
           >
             {session ? <p>Bienvenido!</p> : MENU_ITEMS[2].label}

@@ -17,6 +17,7 @@
     "@commitlint/config-conventional": "^19.1.0",
     "@nextui-org/react": "^2.2.10",
     "@prisma/client": "^5.11.0",
+    "@vercel/blob": "^0.22.1",
     "bcryptjs": "^2.4.3",
     "clsx": "^2.1.0",
     "formik": "^2.4.5",

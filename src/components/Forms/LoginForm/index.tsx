@@ -38,6 +38,7 @@ export const LoginForm: React.FC = () => {
       router.push("/");
     }
   };
+
   return (
     <>
       <Card className="flex px-2">
