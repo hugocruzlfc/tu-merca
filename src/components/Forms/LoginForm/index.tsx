@@ -52,7 +52,7 @@ export const LoginForm: React.FC = () => {
             <Form noValidate>
               <CardBody className="px-10">
                 <Input
-                  className="mb-2 mt-1"
+                  className="mt-2"
                   type="email"
                   name="email"
                   placeholder="tu-correo@.domain.com"
@@ -61,7 +61,7 @@ export const LoginForm: React.FC = () => {
                 />
 
                 <Input
-                  className="mb-2 mt-1"
+                  className="mt-4"
                   type={isVisible ? "text" : "password"}
                   name="password"
                   placeholder="tu-contraseña"

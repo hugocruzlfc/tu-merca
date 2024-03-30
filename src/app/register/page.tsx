@@ -1,3 +1,4 @@
+import { Brand, RegisterForm } from "@/components";
 import { NextPage } from "next";
 
 import type { Metadata } from "next";
@@ -8,10 +9,11 @@ export const metadata: Metadata = {
 
 const RegisterPage: NextPage = () => {
   return (
-    <div className="flex items-center justify-center m-20">
-      <p>
-        For this moment the Register page are waiting for Figma design!!!! ⚙️👨🏻‍💻
-      </p>
+    <div className="container max-w-[517px] max-h-[550] mx-auto text-center">
+      <div className="mt-10 mb-10 flex justify-center">
+        <Brand />
+      </div>
+      <RegisterForm />
     </div>
   );
 };

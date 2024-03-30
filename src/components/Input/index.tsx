@@ -22,7 +22,7 @@ export const Input: React.FC<InputProps> = (props) => {
       <ErrorMessage
         name={props.name}
         component="span"
-        className="dark:text-red-500 mb-3 text-red-600"
+        className="dark:text-red-500 mb-2 text-red-600 text-sm"
       />
     </>
   );
