@@ -1,12 +1,17 @@
 import { NextPage } from "next";
+import { Profile } from "@/components";
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Profile",
+};
 
 const Page: NextPage = () => {
   return (
-    <div className="flex items-center justify-center m-20">
-      <p>
-        For this moment the Profile page are waiting for Figma design!!!! ⚙️👨🏻‍💻
-      </p>
-    </div>
+    <>
+      <Profile />
+    </>
   );
 };
 
