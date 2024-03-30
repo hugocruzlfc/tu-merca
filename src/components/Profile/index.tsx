@@ -6,6 +6,7 @@ export interface ProfileProps {}
 
 export const Profile: React.FC<ProfileProps> = ({}) => {
   const { data: session } = useSession();
+
   return (
     <div className="flex flex-col items-center justify-center m-20">
       <p>
