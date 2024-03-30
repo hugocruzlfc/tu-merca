@@ -22,8 +22,11 @@ import { RoutesPage } from "@/types";
 import { MENU_ITEMS } from "@/constants";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import { LogoutIcon } from "../Icons";
+import { useSession, signOut } from "next-auth/react";
 
 export const NavBar: React.FC = () => {
+  const { data: session } = useSession();
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -57,7 +60,7 @@ export const NavBar: React.FC = () => {
             href={RoutesPage.LOGIN}
             color="secondary"
           >
-            {MENU_ITEMS[2].label}
+            {session ? <p>Bienvenido!</p> : MENU_ITEMS[2].label}
           </Link>
         </NavbarItem>
         <NavbarItem className="hidden sm:flex">
@@ -76,6 +79,17 @@ export const NavBar: React.FC = () => {
             <IoCartOutline size={35} />
           </Link>
         </NavbarItem>
+        {session && (
+          <NavbarItem className="hidden sm:flex">
+            <Link
+              href={RoutesPage.HOME}
+              color="secondary"
+              onClick={() => signOut()}
+            >
+              <LogoutIcon className="text-preferredColor" />
+            </Link>
+          </NavbarItem>
+        )}
         <NavbarItem className="sm:hidden">
           <Link
             href="#"
@@ -92,20 +106,22 @@ export const NavBar: React.FC = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
-        {MENU_ITEMS.map((menuItem, index) => (
-          <NavbarMenuItem key={`${menuItem.label}-${index}`}>
-            <Link
-              color="secondary"
-              className={clsx("w-full", {
-                "text-blue-600": pathname === menuItem.href,
-              })}
-              href={menuItem.href}
-              size="sm"
-            >
-              {menuItem.label}
-            </Link>
-          </NavbarMenuItem>
-        ))}
+        {MENU_ITEMS.map((menuItem, index) => {
+          return menuItem.public || session ? (
+            <NavbarMenuItem key={`${menuItem.label}-${index}`}>
+              <Link
+                color="secondary"
+                className={clsx("w-full", {
+                  "text-blue-600": pathname === menuItem.href,
+                })}
+                href={menuItem.href as string}
+                size="sm"
+              >
+                {menuItem.label}
+              </Link>
+            </NavbarMenuItem>
+          ) : null;
+        })}
       </NavbarMenu>
     </Navbar>
   );

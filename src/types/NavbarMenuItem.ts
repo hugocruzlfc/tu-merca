@@ -1,1 +1,1 @@
-export type NavBarMenuItem = Record<string, string>;
+export type NavBarMenuItem = Record<string, string | boolean>;
