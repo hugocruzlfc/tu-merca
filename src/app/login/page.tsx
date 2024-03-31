@@ -10,10 +10,7 @@ export const metadata: Metadata = {
 
 const LoginPage: NextPage = () => {
   return (
-    <div className="container max-w-[517px] max-h-[550] mx-auto text-center">
-      <div className="mt-10 mb-10 flex justify-center">
-        <Brand />
-      </div>
+    <div className="container max-w-[517px] max-h-[550] mx-auto text-center mt-20">
       <LoginForm />
     </div>
   );

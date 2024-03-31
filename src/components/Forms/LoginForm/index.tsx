@@ -8,13 +8,13 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import { EyeFilledIcon, EyeSlashFilledIcon } from "@/components/Icons";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Formik, Form } from "formik";
 import { LoginFormInitialValues } from "@/constants";
 import { loginFormValidationsSchema } from "@/utils";
 import { Input } from "@/components/Input";
+import { Eye, EyeOff } from "lucide-react";
 
 export const LoginForm: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -75,9 +75,9 @@ export const LoginForm: React.FC = () => {
                       onClick={toggleVisibility}
                     >
                       {isVisible ? (
-                        <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                        <EyeOff strokeWidth={1.5} />
                       ) : (
-                        <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                        <Eye strokeWidth={1.5} />
                       )}
                     </button>
                   }

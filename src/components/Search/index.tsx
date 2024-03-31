@@ -1,6 +1,6 @@
 import React from "react";
 import { Input } from "@nextui-org/react";
-import { SearchIcon } from "../Icons";
+import { Search as SearchIcon } from "lucide-react";
 
 export interface SearchProps {}
 
@@ -13,7 +13,10 @@ export const Search: React.FC<SearchProps> = ({}) => {
       variant="bordered"
       className="w-full"
       endContent={
-        <SearchIcon className="pointer-events-none flex-shrink-0 text-preferredColor" />
+        <SearchIcon
+          size={20}
+          color="#FFA500"
+        />
       }
     />
   );
