@@ -1,11 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { FacebookIcon, LinkedinIcon, XIcon } from "../Icons";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="border-t">
-      {" "}
+    <footer className="border-t mt-10">
       <div className="flex flex-wrap gap-5 text-sm text-muted-foreground border-b flex-row justify-center py-10">
         <div className="flex flex-wrap items-center gap-1">
           <span>
@@ -35,43 +35,68 @@ export const Footer: React.FC = () => {
           Holguín, Cuba
         </div>
       </div>
-      <div className="text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} TuMerca. Todos los derechos reservados. d
-      </div>
-      <div className="mx-auto max-w-5xl space-y-5 px-3 py-5">
-        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
-          {/* <div className="space-y-2">
-            <h3 className="text-xl font-semibold">Flow Jobs</h3>
-            <p className="text-sm text-muted-foreground">
-              Connecting talents with opportunities
-            </p>
+      <div className="flex flex-col sm:flex-row items-center justify-between px-5 rounded-full border py-2 mt-10">
+        <div className="flex flex-row gap-2 sm:mr-48">
+          <div className="rounded-full bg-orange-400 p-1">
+            <Link
+              href={"https://facebook.com/tu_merca"}
+              passHref
+              legacyBehavior
+            >
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FacebookIcon />
+              </a>
+            </Link>
           </div>
-          <div ">
+          <div className="rounded-full bg-orange-400 p-1">
             <Link
-              href="/about"
-              className="hover:underline"
+              href={"https://twitter.com/tu_merca"}
+              passHref
+              legacyBehavior
             >
-              About Us
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <XIcon />
+              </a>
             </Link>
+          </div>
+          <div className="rounded-full bg-orange-400 p-1">
             <Link
-              href="/contact"
-              className="hover:underline"
+              href={"https://www.linkedin.com/in/tu_merca"}
+              passHref
+              legacyBehavior
             >
-              Contact
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedinIcon />
+              </a>
             </Link>
-            <Link
-              href="/terms"
-              className="hover:underline"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="/privacy"
-              className="hover:underline"
-            >
-              Privacy Policy
-            </Link>
-          </div> */}
+          </div>
+        </div>
+        <div className="text-sm text-muted-foreground">
+          © {new Date().getFullYear()} TuMerca. Todos los derechos reservados.
+        </div>
+        <div>
+          <Link
+            href="/terms"
+            className="text-sm text-muted-foreground"
+          >
+            Política de Privacidad
+          </Link>
+          <span className="mx-2">|</span>
+          <Link
+            href="/terms"
+            className="text-sm text-muted-foreground"
+          >
+            Términos de Servicio
+          </Link>
         </div>
       </div>
     </footer>
