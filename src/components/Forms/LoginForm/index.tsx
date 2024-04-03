@@ -8,13 +8,13 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import { EyeFilledIcon, EyeSlashFilledIcon } from "@/components/Icons";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Formik, Form } from "formik";
 import { LoginFormInitialValues } from "@/constants";
 import { loginFormValidationsSchema } from "@/utils";
 import { Input } from "@/components/Input";
+import { Eye, EyeOff } from "lucide-react";
 
 export const LoginForm: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,7 +43,6 @@ export const LoginForm: React.FC = () => {
     <>
       <Card className="flex px-2">
         <p className="text-lg mt-5 mb-5">Iniciar sesión</p>
-        <p>Dirección de e-mail o número de teléfono móvil</p>
         <Formik
           initialValues={LoginFormInitialValues}
           validationSchema={loginFormValidationsSchema}
@@ -52,36 +51,43 @@ export const LoginForm: React.FC = () => {
           {() => (
             <Form noValidate>
               <CardBody className="px-10">
-                <Input
-                  className="mt-2"
-                  type="email"
-                  name="email"
-                  placeholder="tu-correo@.domain.com"
-                  variant="bordered"
-                  size="sm"
-                />
-
-                <Input
-                  className="mt-4"
-                  type={isVisible ? "text" : "password"}
-                  name="password"
-                  placeholder="tu-contraseña"
-                  variant="bordered"
-                  size="sm"
-                  endContent={
-                    <button
-                      className="focus:outline-none"
-                      type="button"
-                      onClick={toggleVisibility}
-                    >
-                      {isVisible ? (
-                        <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-                      ) : (
-                        <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-                      )}
-                    </button>
-                  }
-                />
+                <div className="mb-2 mt-1">
+                  <Input
+                    className="mt-2"
+                    type="email"
+                    name="email"
+                    placeholder="tu-correo@.domain.com"
+                    variant="bordered"
+                    size="sm"
+                    label="Correo electrónico"
+                    labelPlacement="outside"
+                  />
+                </div>
+                <div className="mb-2 mt-1">
+                  <Input
+                    className="mt-4"
+                    type={isVisible ? "text" : "password"}
+                    name="password"
+                    placeholder="tu-contraseña"
+                    variant="bordered"
+                    size="sm"
+                    label="Contraseña"
+                    labelPlacement="outside"
+                    endContent={
+                      <button
+                        className="focus:outline-none"
+                        type="button"
+                        onClick={toggleVisibility}
+                      >
+                        {isVisible ? (
+                          <EyeOff strokeWidth={1.5} />
+                        ) : (
+                          <Eye strokeWidth={1.5} />
+                        )}
+                      </button>
+                    }
+                  />
+                </div>
 
                 <Button
                   color="primary"

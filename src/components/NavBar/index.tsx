@@ -10,11 +10,6 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from "@nextui-org/react";
-import {
-  IoCartOutline,
-  IoSearchOutline,
-  IoPersonCircleOutline,
-} from "react-icons/io5";
 import { Brand } from "../Brand";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 import { Search } from "../Search";
@@ -22,8 +17,13 @@ import { RoutesPage } from "@/types";
 import { MENU_ITEMS } from "@/constants";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { LogoutIcon } from "../Icons";
 import { useSession, signOut } from "next-auth/react";
+import {
+  CircleUserRound,
+  ShoppingCart,
+  Search as SearchIcon,
+  LogOut,
+} from "lucide-react";
 
 export const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -68,7 +68,10 @@ export const NavBar: React.FC = () => {
             href={RoutesPage.PROFILE}
             color="secondary"
           >
-            <IoPersonCircleOutline size={35} />
+            <CircleUserRound
+              size={30}
+              strokeWidth={1.5}
+            />
           </Link>
         </NavbarItem>
         <NavbarItem className="hidden sm:flex">
@@ -76,7 +79,10 @@ export const NavBar: React.FC = () => {
             href={RoutesPage.CHECKOUT}
             color="secondary"
           >
-            <IoCartOutline size={35} />
+            <ShoppingCart
+              size={30}
+              strokeWidth={1.5}
+            />
           </Link>
         </NavbarItem>
         {session && (
@@ -86,7 +92,7 @@ export const NavBar: React.FC = () => {
               color="secondary"
               onClick={() => signOut()}
             >
-              <LogoutIcon className="text-preferredColor" />
+              <LogOut color="#FFA500" />
             </Link>
           </NavbarItem>
         )}
@@ -95,9 +101,10 @@ export const NavBar: React.FC = () => {
             href="#"
             color="secondary"
           >
-            <IoSearchOutline
-              size={35}
-              className="text-preferredColor"
+            <SearchIcon
+              size={30}
+              strokeWidth={1.5}
+              color="#FFA500"
             />
           </Link>
         </NavbarItem>

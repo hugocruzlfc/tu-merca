@@ -1,6 +1,5 @@
 "use client";
 
-import { EyeFilledIcon, EyeSlashFilledIcon } from "@/components/Icons";
 import { RegisterFormInitialValues } from "@/constants";
 import { registerFormValidationsSchema } from "@/utils";
 import {
@@ -15,6 +14,7 @@ import { Formik, Form } from "formik";
 import React, { useState } from "react";
 import { Input } from "@/components/Input";
 import { createUser } from "@/actions";
+import { Eye, EyeOff } from "lucide-react";
 
 export const RegisterForm: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -89,9 +89,9 @@ export const RegisterForm: React.FC = () => {
                         onClick={toggleVisibility}
                       >
                         {isVisible ? (
-                          <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                          <EyeOff strokeWidth={1.5} />
                         ) : (
-                          <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                          <Eye strokeWidth={1.5} />
                         )}
                       </button>
                     }
