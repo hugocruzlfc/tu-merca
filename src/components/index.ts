@@ -8,6 +8,8 @@ export * from "./Forms";
 export * from "./Icons";
 export * from "./Input";
 export * from "./NavBar";
+export * from "./ProductItem";
+export * from "./ProductsResult";
 export * from "./Profile";
 export * from "./Search";
 export * from "./ThemeSwitcher";
