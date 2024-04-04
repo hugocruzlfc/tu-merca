@@ -40,3 +40,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ```bash
 npx prisma db seed
 ```
+
+## Run migration
+
+```bash
+npx prisma migrate dev
+npx prisma migrate deploy
+```
