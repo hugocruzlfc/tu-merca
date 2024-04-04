@@ -1,6 +1,6 @@
 {
   "name": "tu-merca",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -11,16 +11,17 @@
     "lint": "next lint",
     "prisma:migrate": "dotenv -e .env.local prisma migrate dev",
     "prepare": "husky",
-    "seed": "node prisma/seed.js",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "release": "commit-and-tag-version"
   },
   "dependencies": {
     "@commitlint/config-conventional": "^19.1.0",
     "@nextui-org/react": "^2.2.10",
     "@prisma/client": "^5.12.0",
-    "@vercel/blob": "^0.22.1",
+    "@vercel/blob": "^0.0.2",
     "bcryptjs": "^2.4.3",
     "clsx": "^2.1.0",
+    "commit-and-tag-version": "^12.2.0",
     "formik": "^2.4.5",
     "framer-motion": "^11.0.24",
     "lucide-react": "^0.363.0",
@@ -41,10 +42,18 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "husky": "^9.0.11",
-    "pinst": "^3.0.0",
     "postcss": "^8",
     "prisma": "^5.12.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "commit-and-tag-version": {
+    "skip": {
+      "commit": true,
+      "tag": true
+    }
   }
 }

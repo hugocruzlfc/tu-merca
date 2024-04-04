@@ -5,7 +5,7 @@ import { FacebookIcon, LinkedinIcon, XIcon } from "../Icons";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="border-t mt-10">
+    <footer className="border-t my-10">
       <div className="flex flex-wrap gap-5 text-sm text-muted-foreground border-b flex-row justify-center py-10">
         <div className="flex flex-wrap items-center gap-1">
           <span>
