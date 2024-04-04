@@ -1,7 +1,6 @@
 import React from "react";
 import { prisma } from "@/lib";
 import Link from "next/link";
-import { ProductItem } from "../ProductItem";
 import { ProductsList } from "../ProductsList";
 
 export interface ProductsResultProps {
