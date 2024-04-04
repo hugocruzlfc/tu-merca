@@ -1,6 +1,6 @@
 {
   "name": "tu-merca",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -18,9 +18,10 @@
     "@commitlint/config-conventional": "^19.1.0",
     "@nextui-org/react": "^2.2.10",
     "@prisma/client": "^5.12.0",
-    "@vercel/blob": "^0.22.1",
+    "@vercel/blob": "^0.0.2",
     "bcryptjs": "^2.4.3",
     "clsx": "^2.1.0",
+    "commit-and-tag-version": "^12.2.0",
     "formik": "^2.4.5",
     "framer-motion": "^11.0.24",
     "lucide-react": "^0.363.0",
