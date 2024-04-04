@@ -11,7 +11,8 @@
     "lint": "next lint",
     "prisma:migrate": "dotenv -e .env.local prisma migrate dev",
     "prepare": "husky",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "release": "commit-and-tag-version"
   },
   "dependencies": {
     "@commitlint/config-conventional": "^19.1.0",
@@ -48,5 +49,11 @@
   },
   "prisma": {
     "seed": "node prisma/seed.js"
+  },
+  "commit-and-tag-version": {
+    "skip": {
+      "commit": true,
+      "tag": true
+    }
   }
 }
