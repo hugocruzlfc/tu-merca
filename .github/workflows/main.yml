@@ -1,0 +1,38 @@
+name: 🚀 Check Version ⚙️
+
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get previous version
+        id: get_previous_version
+        run: |
+          PREVIOUS_VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          echo "::set-output name=previous_version::$PREVIOUS_VERSION"
+
+      - name: Check if version is updated
+        id: check_version
+        run: |
+          CURRENT_VERSION=$(node -pe "require('./package.json').version")
+          if [ -z "${{ steps.get_previous_version.outputs.previous_version }}" ]; then
+            echo "This is the first version."
+          else
+            echo "Previous version: ${{ steps.get_previous_version.outputs.previous_version }}"
+            echo "Current version: $CURRENT_VERSION"
+            if [ "$CURRENT_VERSION" != "${{ steps.get_previous_version.outputs.previous_version }}" ]; then
+              echo "Version has been updated."
+            else
+              echo "Version has not been updated."
+              exit 1
+            fi
+          fi
