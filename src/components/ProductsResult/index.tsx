@@ -25,7 +25,7 @@ export const ProductsResult: React.FC<ProductsResultProps> = async ({}) => {
   const [products] = await Promise.all([productsPromise]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
       {products.map((product) => (
         <Link
           key={product.id}

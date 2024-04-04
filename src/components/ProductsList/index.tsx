@@ -1,24 +1,47 @@
-import { Product } from "@prisma/client";
 import React from "react";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Chip,
+  CardHeader,
+} from "@nextui-org/react";
+import { Product } from "@prisma/client";
+import productPlaceHolder from "@/assets/placeholders/no-product-600x400.png";
+import Image from "next/image";
 
 export interface ProductsListProps {
   product: Product;
 }
 
 export const ProductsList: React.FC<ProductsListProps> = ({ product }) => {
-  const { name, description, price, picture, category } = product;
+  const { name, price, picture, category } = product;
   return (
-    <article className="flex gap-3 rounded-lg border p-5 hover:bg-muted/60 flex-col">
-      <div className="flex justify-between">
-        <p>{name}</p>
-        <p className="border border-orange-400 rounded-full px-1 text-center">
+    <Card
+      shadow="sm"
+      className="w-96"
+    >
+      <CardHeader className="text-sm flex justify-between">
+        <b>{name}</b>
+        <Chip
+          color="warning"
+          variant="bordered"
+          className="text-xs"
+        >
           {category}
-        </p>
-      </div>
-      <div>
-        <p>{description}</p>
-      </div>
-      <p>${price}</p>
-    </article>
+        </Chip>
+      </CardHeader>
+      <CardBody className="overflow-visible p-0">
+        <Image
+          src={productPlaceHolder}
+          alt={name}
+          width={600}
+          height={400}
+        />
+      </CardBody>
+      <CardFooter className="text-small justify-between">
+        <p className="text-default-500">${price}</p>
+      </CardFooter>
+    </Card>
   );
 };
