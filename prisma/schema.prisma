@@ -44,6 +44,7 @@ model Product {
   price       Float
   picture     String?
   category    String
+  location    String
   ownerId     String
   approved    Boolean  @default(false)
   createdAt   DateTime @default(now())

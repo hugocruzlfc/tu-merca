@@ -7,7 +7,6 @@ export * from "./Forms/LoginForm";
 export * from "./Forms/RegisterForm";
 export * from "./Forms";
 export * from "./Icons";
-export * from "./Input";
 export * from "./NavBar";
 export * from "./ProductsList";
 export * from "./ProductsResult";

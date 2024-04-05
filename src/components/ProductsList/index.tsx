@@ -19,7 +19,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({ product }) => {
   return (
     <Card
       shadow="sm"
-      className="w-96"
+      className="sm:w-96"
     >
       <CardHeader className="text-sm flex justify-between">
         <b>{name}</b>

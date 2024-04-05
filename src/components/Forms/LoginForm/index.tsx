@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import {
   Card,
@@ -10,21 +11,28 @@ import {
 } from "@nextui-org/react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Formik, Form } from "formik";
-import { LoginFormInitialValues } from "@/constants";
-import { loginFormValidationsSchema } from "@/utils";
-import { Input } from "@/components/Input";
+import { TLoginFormValidationsSchema, loginFormValidationsSchema } from "@/lib";
 import { Eye, EyeOff } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@nextui-org/react";
 
 export const LoginForm: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<TLoginFormValidationsSchema>({
+    resolver: zodResolver(loginFormValidationsSchema),
+  });
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
-  const handleSignIn = async (values: { email: string; password: string }) => {
+  const onSubmit = async (values: TLoginFormValidationsSchema) => {
     const { email, password } = values;
-
     const result = await signIn("credentials", {
       email,
       password,
@@ -35,6 +43,7 @@ export const LoginForm: React.FC = () => {
       // Manejar el error de inicio de sesión
       console.error(result.error);
     } else {
+      reset();
       router.push("/");
     }
   };
@@ -43,66 +52,67 @@ export const LoginForm: React.FC = () => {
     <>
       <Card className="flex px-2">
         <p className="text-lg mt-5 mb-5">Iniciar sesión</p>
-        <Formik
-          initialValues={LoginFormInitialValues}
-          validationSchema={loginFormValidationsSchema}
-          onSubmit={(values) => handleSignIn(values)}
-        >
-          {() => (
-            <Form noValidate>
-              <CardBody className="px-10">
-                <div className="mb-2 mt-1">
-                  <Input
-                    className="mt-2"
-                    type="email"
-                    name="email"
-                    placeholder="tu-correo@.domain.com"
-                    variant="bordered"
-                    size="sm"
-                    label="Correo electrónico"
-                    labelPlacement="outside"
-                  />
-                </div>
-                <div className="mb-2 mt-1">
-                  <Input
-                    className="mt-4"
-                    type={isVisible ? "text" : "password"}
-                    name="password"
-                    placeholder="tu-contraseña"
-                    variant="bordered"
-                    size="sm"
-                    label="Contraseña"
-                    labelPlacement="outside"
-                    endContent={
-                      <button
-                        className="focus:outline-none"
-                        type="button"
-                        onClick={toggleVisibility}
-                      >
-                        {isVisible ? (
-                          <Eye strokeWidth={1.5} />
-                        ) : (
-                          <EyeOff strokeWidth={1.5} />
-                        )}
-                      </button>
-                    }
-                  />
-                </div>
+        <CardBody>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-y-2"
+          >
+            <div>
+              <Input
+                {...register("email")}
+                type="email"
+                placeholder="tu-correo@.domain.com"
+                className="py-2 rounded"
+                variant="bordered"
+                size="sm"
+                label="Correo electrónico"
+                labelPlacement="outside"
+              />
+              {errors.email && (
+                <p className="text-red-500 text-xs">{`${errors.email.message}`}</p>
+              )}
+            </div>
+            <div>
+              <Input
+                {...register("password")}
+                type={isVisible ? "text" : "password"}
+                placeholder="Password"
+                className="py-2 rounded"
+                variant="bordered"
+                size="sm"
+                label="Contraseña"
+                labelPlacement="outside"
+                endContent={
+                  <button
+                    className="focus:outline-none"
+                    type="button"
+                    onClick={toggleVisibility}
+                  >
+                    {isVisible ? (
+                      <Eye strokeWidth={1.5} />
+                    ) : (
+                      <EyeOff strokeWidth={1.5} />
+                    )}
+                  </button>
+                }
+              />
+              {errors.password && (
+                <p className="text-red-500 text-xs">{`${errors.password.message}`}</p>
+              )}
+            </div>
 
-                <Button
-                  color="primary"
-                  type="submit"
-                  className="w-full mt-5 mb-5"
-                >
-                  Continuar
-                </Button>
-              </CardBody>
-            </Form>
-          )}
-        </Formik>
-
-        <CardFooter>
-          <p className="text-start">
+            <Button
+              disabled={isSubmitting}
+              color="primary"
+              type="submit"
+              className="w-full mt-5 mb-5"
+            >
+              Continuar
+            </Button>
+          </form>
+        </CardBody>
+        <CardFooter className="text-sm">
+          <p className="text-center">
             Al identidicarte, aceptas nuestras
             <span className="text-sky-600 mx-1 cursor-pointer hover:underline">
               Condiciones de uso y venta.

@@ -42,7 +42,7 @@ export const authOptions: NextAuthOptions = {
           id: userFound.id,
           email: userFound.email,
           username: userFound.username,
-          randomKey: "Hey cool",
+          randomKey: "You can add any data here!",
         };
       },
     }),
