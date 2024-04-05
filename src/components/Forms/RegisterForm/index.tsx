@@ -89,9 +89,9 @@ export const RegisterForm: React.FC = () => {
                         onClick={toggleVisibility}
                       >
                         {isVisible ? (
-                          <EyeOff strokeWidth={1.5} />
-                        ) : (
                           <Eye strokeWidth={1.5} />
+                        ) : (
+                          <EyeOff strokeWidth={1.5} />
                         )}
                       </button>
                     }

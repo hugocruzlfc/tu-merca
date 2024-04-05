@@ -1,3 +1,5 @@
+import { Admin } from "@/components";
+
 export default async function AdminPage() {
   //   const unapprovedJobs = await prisma.job.findMany({
   //     where: { approved: false },
@@ -6,6 +8,7 @@ export default async function AdminPage() {
   return (
     <main className="m-auto my-10 max-w-5xl space-y-10 px-3">
       <h1 className="text-center">Admin Dashboard</h1>
+      <Admin />
       {/* todo: comprobar correo admin */}
       {/* <H1 className="text-center">Admin Dashboard</H1>
       <section className="flex flex-col gap-3">
