@@ -56,7 +56,7 @@ Cachorro de raza Labrador Retriever, criado en un entorno amoroso y familiar. Es
     name: "Adidas Ultraboost 21",
     slug: "adidas-ultraboost-21-5",
     price: 150000,
-    category: "Ropa, Calzado y Complementos",
+    category: "Ropa y Calzado",
     approved: true,
     location: "Cacocum, Holguín, Cuba",
     description: `

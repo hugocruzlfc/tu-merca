@@ -17,19 +17,12 @@ export interface ProductsListProps {
 export const ProductsList: React.FC<ProductsListProps> = ({ product }) => {
   const { name, price, picture, category } = product;
   return (
-    <Card
-      shadow="sm"
-      className="sm:w-96"
-    >
-      <CardHeader className="text-sm flex justify-between">
-        <b>{name}</b>
-        <Chip
-          color="warning"
-          variant="bordered"
-          className="text-xs"
-        >
-          {category}
-        </Chip>
+    <Card shadow="sm">
+      <CardHeader className="flex md:justify-between flex-col md:flex-row text-center md:text-star">
+        <b className="text-xs md:text-sm">{name}</b>
+        <div className="rounded-full border px-2 py-1 border-primary">
+          <p className="text-xs text-preferredColor">{category}</p>
+        </div>
       </CardHeader>
       <CardBody className="overflow-visible p-0">
         <Image
