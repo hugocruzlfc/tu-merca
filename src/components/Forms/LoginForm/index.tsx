@@ -16,6 +16,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@nextui-org/react";
+import { showToast } from "@/components";
 
 export const LoginForm: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,11 +41,11 @@ export const LoginForm: React.FC = () => {
     });
 
     if (result?.error) {
-      // Manejar el error de inicio de sesión
-      console.error(result.error);
+      showToast({ type: "error", message: result.error });
     } else {
       reset();
       router.push("/");
+      router.refresh();
     }
   };
 

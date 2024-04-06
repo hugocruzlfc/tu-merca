@@ -13,7 +13,7 @@ export async function createUser(formData: FormData) {
 
   const hashedPassword = await hash(password, 12);
 
-  await prisma.user.create({
+  const result = await prisma.user.create({
     data: {
       username,
       email,
@@ -21,5 +21,7 @@ export async function createUser(formData: FormData) {
     },
   });
 
-  redirect("/login");
+  if (result) {
+    redirect("/login");
+  }
 }
