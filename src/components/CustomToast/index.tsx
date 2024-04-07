@@ -3,8 +3,8 @@
 import { ShieldBan, ShieldCheck } from "lucide-react";
 import React from "react";
 import { toast } from "react-hot-toast";
-import clsx from "clsx";
 import { ToastType } from "@/types";
+import { cn } from "@/utils";
 
 export interface CustomToastProps {
   visible: boolean;
@@ -21,9 +21,9 @@ export const CustomToast: React.FC<CustomToastProps> = ({
 }) => {
   return (
     <div
-      className={clsx(
-        " max-w-xs w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5",
-        { "animate-enter": visible, "animate-leave": !visible }
+      className={cn(
+        "max-w-xs w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5",
+        visible ? "animate-enter" : "animate-leave"
       )}
     >
       <div className="flex-1 w-0 p-4">

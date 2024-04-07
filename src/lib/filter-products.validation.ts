@@ -5,3 +5,5 @@ export const productFilterSchema = z.object({
   location: z.string().optional(),
   category: z.string().optional(),
 });
+
+export type ProductFilterValues = z.infer<typeof productFilterSchema>;

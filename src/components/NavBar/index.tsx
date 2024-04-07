@@ -16,7 +16,6 @@ import { Search } from "../Search";
 import { RoutesPage } from "@/types";
 import { MENU_ITEMS } from "@/constants";
 import { usePathname } from "next/navigation";
-import clsx from "clsx";
 import { useSession, signOut } from "next-auth/react";
 import {
   CircleUserRound,
@@ -24,6 +23,7 @@ import {
   Search as SearchIcon,
   LogOut,
 } from "lucide-react";
+import { cn } from "@/utils";
 
 export const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -118,9 +118,10 @@ export const NavBar: React.FC = () => {
             <NavbarMenuItem key={`${menuItem.label}-${index}`}>
               <Link
                 color="secondary"
-                className={clsx("w-full", {
-                  "text-blue-600": pathname === menuItem.href,
-                })}
+                className={cn(
+                  "w-full",
+                  pathname === menuItem.href && "text-blue-600"
+                )}
                 href={menuItem.href as string}
                 size="sm"
               >

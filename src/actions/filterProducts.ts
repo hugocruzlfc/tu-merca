@@ -1,19 +1,18 @@
 "use server";
 
-// import { jobFilterSchema } from "@/lib";
-// import { redirect } from "next/navigation";
+import { productFilterSchema } from "@/lib";
+import { redirect } from "next/navigation";
 
-// export async function filterJobs(formData: FormData) {
-//   const values = Object.fromEntries(formData.entries());
+export async function filterProducts(formData: FormData) {
+  const values = Object.fromEntries(formData.entries());
 
-//   const { search, location, type, remote } = jobFilterSchema.parse(values);
+  const { query, location, category } = productFilterSchema.parse(values);
 
-//   const queryParams = new URLSearchParams({
-//     ...(search && { search: search.trim() }),
-//     ...(location && { location }),
-//     ...(type && { type }),
-//     ...(remote && { remote: "true" }),
-//   });
+  const queryParams = new URLSearchParams({
+    ...(query && { query: query.trim() }),
+    ...(location && { location }),
+    ...(category && { category }),
+  });
 
-//   redirect(`/?${queryParams.toString()}`);
-// }
+  redirect(`/?${queryParams.toString()}`);
+}
