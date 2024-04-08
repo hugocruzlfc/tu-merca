@@ -1,5 +1,5 @@
 import { H1, ProductsResult, ProductsFilterSidebar } from "@/components";
-import { ProductFilterValues } from "@/lib";
+import { ProductFilterValues } from "@/types";
 import { SearchParams } from "@/types";
 import { getTitle } from "@/utils";
 import { Metadata } from "next";

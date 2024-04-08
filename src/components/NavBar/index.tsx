@@ -43,14 +43,14 @@ export const NavBar: React.FC = () => {
         <Brand />
       </NavbarBrand>
 
-      <NavbarContent
+      {/* <NavbarContent
         justify="start"
         className="hidden sm:flex"
       >
         <NavbarItem className="w-full">
           <Search />
         </NavbarItem>
-      </NavbarContent>
+      </NavbarContent> */}
       <NavbarContent
         justify="end"
         className="gap-4"
@@ -96,7 +96,7 @@ export const NavBar: React.FC = () => {
             </Link>
           </NavbarItem>
         )}
-        <NavbarItem className="sm:hidden">
+        {/* <NavbarItem className="sm:hidden">
           <Link
             href="#"
             color="secondary"
@@ -107,7 +107,7 @@ export const NavBar: React.FC = () => {
               color="#FFA500"
             />
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem>
           <ThemeSwitcher />
         </NavbarItem>

@@ -1,4 +1,4 @@
-import { ProductFilterValues } from "@/lib";
+import { ProductFilterValues } from "@/types";
 
 export function getTitle(filterValues: ProductFilterValues) {
   const { query, location, category } = filterValues;

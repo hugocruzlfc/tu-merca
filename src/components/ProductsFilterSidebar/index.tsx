@@ -1,9 +1,11 @@
-import { ProductFilterValues, prisma } from "@/lib";
+import { prisma } from "@/lib";
 import React from "react";
 import { Select } from "../UI";
 import { filterProducts } from "@/actions";
-import { ProductCategory } from "@/types";
+import { ProductCategory, ProductFilterValues } from "@/types";
 import { FormSubmitButton } from "../Buttons/FormSubmitButton";
+import { Input } from "@nextui-org/react";
+import { SearchIcon } from "lucide-react";
 
 export interface ProductsFilterSidebarProps {
   defaultValues: ProductFilterValues;
@@ -33,6 +35,23 @@ export default async function ProductsFilterSidebar({
         key={JSON.stringify(defaultValues)}
       >
         <div className="space-y-4">
+          <div className="flex flex-col gap-2">
+            <Input
+              type="text"
+              name="query"
+              placeholder="Buscar"
+              labelPlacement="outside"
+              variant="bordered"
+              className="w-full"
+              defaultValue={defaultValues.query}
+              endContent={
+                <SearchIcon
+                  size={20}
+                  color="#FFA500"
+                />
+              }
+            />
+          </div>
           <div className="flex flex-col gap-2">
             <Select
               name="category"

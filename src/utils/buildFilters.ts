@@ -1,4 +1,4 @@
-import { ProductFilterValues } from "@/lib";
+import { ProductFilterValues } from "@/types";
 import { Prisma } from "@prisma/client";
 
 export function buildFilters(filterValues: ProductFilterValues) {

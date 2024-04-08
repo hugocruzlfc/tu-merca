@@ -11,10 +11,8 @@ import {
 } from "@nextui-org/react";
 import { createUser } from "@/actions";
 import { Eye, EyeOff } from "lucide-react";
-import {
-  TRegisterFormValidationsSchema,
-  registerFormValidationsSchema,
-} from "@/lib";
+import { registerFormValidationsSchema } from "@/lib";
+import { TRegisterFormValidationsSchema } from "@/types";
 import { Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
