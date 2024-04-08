@@ -30,7 +30,7 @@ export default async function Home({
   };
 
   return (
-    <main className="m-auto my-10 space-y-10 px-3">
+    <main className="m-auto my-10 space-y-10 px-6">
       <div className="space-y-5 text-center">
         <H1>{getTitle(filterValues)}</H1>
         <p className="text-muted-foreground">Encuentra tu producto!</p>

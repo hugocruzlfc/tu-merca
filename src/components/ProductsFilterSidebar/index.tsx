@@ -39,7 +39,7 @@ export default async function ProductsFilterSidebar({
               id="category"
               defaultValue={defaultValues.category || ""}
             >
-              <option value="">Categorías</option>
+              <option value="">Todas las categorías</option>
               {Object.values(ProductCategory).map((category) => (
                 <option
                   key={category}
@@ -56,7 +56,7 @@ export default async function ProductsFilterSidebar({
               id="location"
               defaultValue={defaultValues.location || ""}
             >
-              <option value="">Ubicación</option>
+              <option value="">Todas las ubicaciones</option>
               {distinctLocations.map((location) => (
                 <option
                   key={location}

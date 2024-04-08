@@ -15,7 +15,7 @@ export const ProductsResult: React.FC<ProductsResultProps> = async ({
   filterValues,
   page = 1,
 }) => {
-  const productsPerPage = 3;
+  const productsPerPage = 6;
   const skip = (page - 1) * productsPerPage;
   const where = buildFilters(filterValues);
   const productsPromise = prisma.product.findMany({
