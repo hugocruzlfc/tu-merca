@@ -1,5 +1,4 @@
-import { H1, ProductsResult } from "@/components";
-import ProductsFilterSidebar from "@/components/ProductsFilterSidebar";
+import { H1, ProductsResult, ProductsFilterSidebar } from "@/components";
 import { ProductFilterValues } from "@/lib";
 import { SearchParams } from "@/types";
 import { getTitle } from "@/utils";
@@ -38,7 +37,10 @@ export default async function Home({
       </div>
       <section className="flex flex-col gap-4 md:flex-row">
         <ProductsFilterSidebar defaultValues={filterValues} />
-        <ProductsResult filterValues={filterValues} />
+        <ProductsResult
+          filterValues={filterValues}
+          page={page ? parseInt(page) : undefined}
+        />
       </section>
     </main>
   );

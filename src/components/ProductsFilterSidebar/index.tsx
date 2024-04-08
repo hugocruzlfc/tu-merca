@@ -3,15 +3,11 @@ import React from "react";
 import { Select } from "../UI";
 import { filterProducts } from "@/actions";
 import { ProductCategory } from "@/types";
-import { FormSubmitButton } from "../Buttons";
+import { FormSubmitButton } from "../Buttons/FormSubmitButton";
 
 export interface ProductsFilterSidebarProps {
   defaultValues: ProductFilterValues;
 }
-
-// export const ProductsFilterSidebar: React.FC<
-//   ProductsFilterSidebarProps
-//   > = async ({ defaultValues }) =>
 
 export default async function ProductsFilterSidebar({
   defaultValues,

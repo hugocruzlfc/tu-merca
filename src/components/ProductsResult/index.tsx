@@ -4,23 +4,27 @@ import Link from "next/link";
 import { ProductsList } from "../ProductsList";
 import { buildFilters } from "@/utils";
 import { ProductsNotFound } from "../ProductsNotFound";
+import Pagination from "../Pagination";
 
 export interface ProductsResultProps {
   filterValues: ProductFilterValues;
-  //   page?: number;
+  page?: number;
 }
 
 export const ProductsResult: React.FC<ProductsResultProps> = async ({
   filterValues,
+  page = 1,
 }) => {
+  const productsPerPage = 3;
+  const skip = (page - 1) * productsPerPage;
   const where = buildFilters(filterValues);
   const productsPromise = prisma.product.findMany({
     where,
     orderBy: {
       createdAt: "desc",
     },
-    // take: 10,
-    // skip: page ? (page - 1) * 10 : 0,
+    take: productsPerPage,
+    skip,
   });
 
   const countPromise = prisma.product.count({ where });
@@ -31,8 +35,8 @@ export const ProductsResult: React.FC<ProductsResultProps> = async ({
   ]);
 
   return (
-    <>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+    <div className="grow space-y-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
         {products.map((product) => (
           <Link
             key={product.id}
@@ -41,14 +45,16 @@ export const ProductsResult: React.FC<ProductsResultProps> = async ({
             <ProductsList product={product} />
           </Link>
         ))}
+      </div>
 
-        {/* {products.length > 0 && (
-        <Pagination
-          currentPage={page}
-          totalPages={Math.ceil(totalResults / productsPerPage)}
-          filterValues={filterValues}
-        />
-      )} */}
+      <div className="py-5 px-10">
+        {products.length > 0 && (
+          <Pagination
+            currentPage={page}
+            totalPages={Math.ceil(totalResults / productsPerPage)}
+            filterValues={filterValues}
+          />
+        )}
       </div>
 
       {products.length === 0 && (
@@ -56,6 +62,6 @@ export const ProductsResult: React.FC<ProductsResultProps> = async ({
           <ProductsNotFound />
         </div>
       )}
-    </>
+    </div>
   );
 };
