@@ -5,6 +5,7 @@ const placeholderProducts = [
     price: 80000,
     category: "Bebidas",
     approved: true,
+    location: "San Germán, Holgín, Cuba",
     description: `
 **Caja de Cerveza Cristal**
 
@@ -18,6 +19,7 @@ Caja de 24 cervezas Cristal de 350 ml. Cerveza chilena de calidad premium, elabo
     price: 2000000,
     category: "Telefonía",
     approved: true,
+    location: "Moa, Holgín, Cuba",
     description: `
 **IPHONE 13 PRO MAX 256GB**
 
@@ -30,6 +32,7 @@ El iPhone 13 Pro Max es el smartphone más avanzado de Apple hasta la fecha. Con
     price: 50000,
     category: "Deportes",
     approved: true,
+    location: "Las Tunas, Las Tunas, Cuba",
     description: `
 **Balón de Fútbol Adidas**
 
@@ -42,6 +45,7 @@ Balón de fútbol oficial de Adidas, diseñado para ofrecer un rendimiento excep
     price: 30000,
     category: "Mascotas",
     approved: true,
+    location: "Contramaestre, Santiago de Cuba, Cuba",
     description: `
 **Perro Labrador Retriever**
 
@@ -52,8 +56,9 @@ Cachorro de raza Labrador Retriever, criado en un entorno amoroso y familiar. Es
     name: "Adidas Ultraboost 21",
     slug: "adidas-ultraboost-21-5",
     price: 150000,
-    category: "Ropa, Calzado y Complementos",
+    category: "Ropa y Calzado",
     approved: true,
+    location: "Cacocum, Holguín, Cuba",
     description: `
 **Adidas Ultraboost 21**
 
@@ -66,6 +71,7 @@ Zapatillas deportivas Adidas Ultraboost 21, diseñadas para ofrecer un rendimien
     price: 500000,
     category: "Vehículos y Accesorios",
     approved: true,
+    location: "Holguín, Holguín, Cuba",
     description: `
 **Lada 2107**
 
@@ -78,6 +84,7 @@ Vehículo clásico Lada 2107 blanco en excelente estado de conservación. Este a
     price: 250000,
     category: "Hogar",
     approved: true,
+    location: "Centro Habana, La Habana, Cuba",
     description: `
 **Juego de Muebles Clásico**
 
@@ -90,6 +97,7 @@ Juego de muebles clásico de madera maciza, compuesto por un sofá, dos sillones
     price: 100000,
     category: "Productos para Bebés",
     approved: true,
+    location: "Diez de Octubre, La Habana, Cuba",
     description: `
 **Cuna de Madera para Bebé**
 

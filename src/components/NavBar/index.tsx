@@ -16,7 +16,6 @@ import { Search } from "../Search";
 import { RoutesPage } from "@/types";
 import { MENU_ITEMS } from "@/constants";
 import { usePathname } from "next/navigation";
-import clsx from "clsx";
 import { useSession, signOut } from "next-auth/react";
 import {
   CircleUserRound,
@@ -24,6 +23,7 @@ import {
   Search as SearchIcon,
   LogOut,
 } from "lucide-react";
+import { cn } from "@/utils";
 
 export const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -43,14 +43,14 @@ export const NavBar: React.FC = () => {
         <Brand />
       </NavbarBrand>
 
-      <NavbarContent
+      {/* <NavbarContent
         justify="start"
         className="hidden sm:flex"
       >
         <NavbarItem className="w-full">
           <Search />
         </NavbarItem>
-      </NavbarContent>
+      </NavbarContent> */}
       <NavbarContent
         justify="end"
         className="gap-4"
@@ -96,7 +96,7 @@ export const NavBar: React.FC = () => {
             </Link>
           </NavbarItem>
         )}
-        <NavbarItem className="sm:hidden">
+        {/* <NavbarItem className="sm:hidden">
           <Link
             href="#"
             color="secondary"
@@ -107,7 +107,7 @@ export const NavBar: React.FC = () => {
               color="#FFA500"
             />
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem>
           <ThemeSwitcher />
         </NavbarItem>
@@ -118,9 +118,10 @@ export const NavBar: React.FC = () => {
             <NavbarMenuItem key={`${menuItem.label}-${index}`}>
               <Link
                 color="secondary"
-                className={clsx("w-full", {
-                  "text-blue-600": pathname === menuItem.href,
-                })}
+                className={cn(
+                  "w-full",
+                  pathname === menuItem.href && "text-blue-600"
+                )}
                 href={menuItem.href as string}
                 size="sm"
               >

@@ -1,7 +1,6 @@
 "use client";
 
-import { RegisterFormInitialValues } from "@/constants";
-import { registerFormValidationsSchema } from "@/utils";
+import React, { useState } from "react";
 import {
   Button,
   Card,
@@ -10,22 +9,27 @@ import {
   Divider,
   Link,
 } from "@nextui-org/react";
-import { Formik, Form } from "formik";
-import React, { useState } from "react";
-import { Input } from "@/components/Input";
 import { createUser } from "@/actions";
 import { Eye, EyeOff } from "lucide-react";
+import { registerFormValidationsSchema } from "@/lib";
+import { TRegisterFormValidationsSchema } from "@/types";
+import { Input } from "@nextui-org/react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export const RegisterForm: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<TRegisterFormValidationsSchema>({
+    resolver: zodResolver(registerFormValidationsSchema),
+  });
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
-  const handleRegister = async (values: {
-    username: string;
-    email: string;
-    password: string;
-  }) => {
+  const onSubmit = async (values: TRegisterFormValidationsSchema) => {
     const formData = new FormData();
 
     Object.entries(values).forEach(([key, value]) => {
@@ -45,75 +49,83 @@ export const RegisterForm: React.FC = () => {
     <>
       <Card className="flex px-2">
         <p className="text-lg mt-5 mb-5">Crear Cuenta</p>
-        <Formik
-          initialValues={RegisterFormInitialValues}
-          validationSchema={registerFormValidationsSchema}
-          onSubmit={(values) => handleRegister(values)}
-        >
-          {() => (
-            <Form noValidate>
-              <CardBody className="px-10">
-                <div className="mb-2">
-                  <Input
-                    type="text"
-                    name="username"
-                    placeholder="Tu nombre y apellidos"
-                    variant="bordered"
-                    size="sm"
-                    label="Nombre y Apellidos"
-                    labelPlacement="outside"
-                  />
-                </div>
-                <div className="mb-2 mt-1">
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="tu-correo@.domain.com"
-                    variant="bordered"
-                    size="sm"
-                    label="Correo Electrónico"
-                    labelPlacement="outside"
-                  />
-                </div>
-                <div className="mb-2 mt-1">
-                  <Input
-                    type={isVisible ? "text" : "password"}
-                    name="password"
-                    placeholder="tu-contraseña"
-                    variant="bordered"
-                    size="sm"
-                    endContent={
-                      <button
-                        className="focus:outline-none"
-                        type="button"
-                        onClick={toggleVisibility}
-                      >
-                        {isVisible ? (
-                          <EyeOff strokeWidth={1.5} />
-                        ) : (
-                          <Eye strokeWidth={1.5} />
-                        )}
-                      </button>
-                    }
-                    label="Contraseña"
-                    labelPlacement="outside"
-                  />
-                </div>
+        <CardBody>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-y-2"
+          >
+            <div className="mb-2">
+              <Input
+                type="text"
+                {...register("username")}
+                placeholder="Tu nombre y apellidos"
+                variant="bordered"
+                size="sm"
+                label="Nombre y Apellidos"
+                labelPlacement="outside"
+                className="py-2 rounded"
+              />
+              {errors.username && (
+                <p className="text-red-500 text-xs">{`${errors.username.message}`}</p>
+              )}
+            </div>
+            <div>
+              <Input
+                {...register("email")}
+                type="email"
+                placeholder="tu-correo@.domain.com"
+                className="py-2 rounded"
+                variant="bordered"
+                size="sm"
+                label="Correo electrónico"
+                labelPlacement="outside"
+              />
+              {errors.email && (
+                <p className="text-red-500 text-xs">{`${errors.email.message}`}</p>
+              )}
+            </div>
+            <div>
+              <Input
+                {...register("password")}
+                type={isVisible ? "text" : "password"}
+                placeholder="Password"
+                className="py-2 rounded"
+                variant="bordered"
+                size="sm"
+                label="Contraseña"
+                labelPlacement="outside"
+                endContent={
+                  <button
+                    className="focus:outline-none"
+                    type="button"
+                    onClick={toggleVisibility}
+                  >
+                    {isVisible ? (
+                      <Eye strokeWidth={1.5} />
+                    ) : (
+                      <EyeOff strokeWidth={1.5} />
+                    )}
+                  </button>
+                }
+              />
+              {errors.password && (
+                <p className="text-red-500 text-xs">{`${errors.password.message}`}</p>
+              )}
+            </div>
 
-                <Button
-                  color="primary"
-                  type="submit"
-                  className="w-full mt-5 mb-5"
-                >
-                  Continuar
-                </Button>
-              </CardBody>
-            </Form>
-          )}
-        </Formik>
+            <Button
+              disabled={isSubmitting}
+              color="primary"
+              type="submit"
+              className="w-full mt-5 mb-5"
+            >
+              Continuar
+            </Button>
+          </form>
+        </CardBody>
 
-        <CardFooter>
-          <p className="text-start">
+        <CardFooter className="text-sm">
+          <p className="text-center">
             Al crear una cuenta, acepta nuestras
             <span className="text-sky-600 mx-1 cursor-pointer hover:underline">
               Condiciones de uso
