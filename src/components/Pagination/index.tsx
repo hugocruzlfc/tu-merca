@@ -1,4 +1,4 @@
-import { ProductFilterValues } from "@/lib";
+import { ProductFilterValues } from "@/types";
 import { cn } from "@/utils";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
