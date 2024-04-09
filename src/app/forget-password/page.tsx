@@ -1,18 +1,17 @@
+import { ForgetPassword } from "@/components";
 import { NextPage } from "next";
-import { LoginForm } from "@/components/Forms";
-
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Login",
+  title: "Forget Password",
 };
 
-const LoginPage: NextPage = () => {
+const Page: NextPage = () => {
   return (
     <div className="container max-w-[517px] max-h-[550] mx-auto text-center mt-10">
-      <LoginForm />
+      <ForgetPassword />
     </div>
   );
 };
 
-export default LoginPage;
+export default Page;

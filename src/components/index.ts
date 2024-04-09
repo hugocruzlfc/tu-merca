@@ -18,3 +18,4 @@ export * from "./Profile";
 export * from "./Search";
 export * from "./ThemeSwitcher";
 export * from "./UI";
+export * from "./ForgetPassword";

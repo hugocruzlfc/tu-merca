@@ -1,4 +1,5 @@
 import {
+  forgetPasswordFormValidationsSchema,
   loginFormValidationsSchema,
   registerFormValidationsSchema,
 } from "@/lib";
@@ -10,4 +11,8 @@ export type TLoginFormValidationsSchema = z.infer<
 
 export type TRegisterFormValidationsSchema = z.infer<
   typeof registerFormValidationsSchema
+>;
+
+export type TForgetPasswordFormValidationsSchema = z.infer<
+  typeof forgetPasswordFormValidationsSchema
 >;

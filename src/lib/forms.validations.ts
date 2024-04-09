@@ -14,3 +14,7 @@ export const registerFormValidationsSchema = z.object({
     .min(5, "La contraseña debe tener al menos 5 caracteres!"),
   email: z.string().email({ message: "Correo elctrónico no válido!" }),
 });
+
+export const forgetPasswordFormValidationsSchema = z.object({
+  email: z.string().email({ message: "Correo elctrónico no válido!" }),
+});
