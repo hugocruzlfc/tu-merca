@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/react";
+import { Button } from "@/components";
 import { Loader2 } from "lucide-react";
 
 interface LoadingButtonProps
@@ -13,7 +13,8 @@ export default function LoadingButton({
   ...props
 }: LoadingButtonProps) {
   return (
-    <button
+    <Button
+      {...props}
       className="w-full bg-primary text-white rounded-[14px] py-2"
       disabled={props.disabled || loading}
     >
@@ -26,6 +27,6 @@ export default function LoadingButton({
         )}
         {children}
       </span>
-    </button>
+    </Button>
   );
 }
