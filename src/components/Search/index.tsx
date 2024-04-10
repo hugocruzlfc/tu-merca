@@ -14,7 +14,7 @@ export const Search: React.FC = () => {
     <Input
       type="text"
       name="query"
-      placeholder="Buscar"
+      placeholder="Título, descripción, categoría..."
       labelPlacement="outside"
       variant="bordered"
       className="w-full"

@@ -12,23 +12,23 @@ import {
 } from "@nextui-org/react";
 import { Brand } from "../Brand";
 import { ThemeSwitcher } from "../ThemeSwitcher";
-import { Search } from "../Search";
 import { RoutesPage } from "@/types";
 import { MENU_ITEMS } from "@/constants";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
-import {
-  CircleUserRound,
-  ShoppingCart,
-  Search as SearchIcon,
-  LogOut,
-} from "lucide-react";
+import { CircleUserRound, ShoppingCart, LogOut } from "lucide-react";
 import { cn } from "@/utils";
 
 export const NavBar: React.FC = () => {
   const { data: session } = useSession();
+  const router = useRouter();
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleSignOut = () => {
+    signOut();
+    router.push(RoutesPage.HOME);
+  };
 
   return (
     <Navbar
@@ -90,7 +90,7 @@ export const NavBar: React.FC = () => {
             <Link
               href={RoutesPage.HOME}
               color="secondary"
-              onClick={() => signOut()}
+              onClick={handleSignOut}
             >
               <LogOut color="#FFA500" />
             </Link>

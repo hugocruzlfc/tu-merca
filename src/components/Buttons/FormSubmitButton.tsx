@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useFormStatus } from "react-dom";
-import LoadingButton from "../LoadingButton";
+import LoadingButton from "./LoadingButton";
 
 export function FormSubmitButton(
   props: React.ButtonHTMLAttributes<HTMLButtonElement>

@@ -1,6 +1,6 @@
 import { prisma } from "@/lib";
 import React from "react";
-import { Select } from "../UI";
+import { Label, Select } from "../UI";
 import { filterProducts } from "@/actions";
 import { ProductCategory, ProductFilterValues } from "@/types";
 import { FormSubmitButton } from "../Buttons/FormSubmitButton";
@@ -36,10 +36,11 @@ export default async function ProductsFilterSidebar({
       >
         <div className="space-y-4">
           <div className="flex flex-col gap-2">
+            <Label htmlFor="query">Buscar</Label>
             <Input
               type="text"
               name="query"
-              placeholder="Buscar"
+              placeholder="Título, descripción, categoría..."
               labelPlacement="outside"
               variant="bordered"
               className="w-full"
@@ -53,6 +54,7 @@ export default async function ProductsFilterSidebar({
             />
           </div>
           <div className="flex flex-col gap-2">
+            <Label htmlFor="category">Categoría</Label>
             <Select
               name="category"
               id="category"
@@ -70,6 +72,7 @@ export default async function ProductsFilterSidebar({
             </Select>
           </div>
           <div className="flex flex-col gap-2">
+            <Label htmlFor="location">Ubicación</Label>
             <Select
               name="location"
               id="location"

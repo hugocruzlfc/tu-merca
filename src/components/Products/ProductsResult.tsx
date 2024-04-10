@@ -1,11 +1,11 @@
 import React from "react";
 import { prisma } from "@/lib";
 import Link from "next/link";
-import { ProductsList } from "../ProductsList";
+import { ProductsList } from "./ProductsList";
 import { buildFilters } from "@/utils";
-import { ProductsNotFound } from "../ProductsNotFound";
+import { ProductsNotFound } from "./ProductsNotFound";
 import Pagination from "../Pagination";
-import { ProductFilterValues } from "@/types";
+import { ProductFilterValues, RoutesPage } from "@/types";
 
 export interface ProductsResultProps {
   filterValues: ProductFilterValues;
@@ -47,7 +47,7 @@ export const ProductsResult: React.FC<ProductsResultProps> = async ({
             {products.map((product) => (
               <Link
                 key={product.id}
-                href={`/products/${product.slug}`}
+                href={`${RoutesPage.PRODUCTS}/${product.slug}`}
               >
                 <ProductsList product={product} />
               </Link>
