@@ -2,7 +2,6 @@
 import {
   Card,
   CardBody,
-  CardFooter,
   Divider,
   Input,
   Button as NextUIButton,
@@ -13,7 +12,7 @@ import { Button } from "../UI";
 import { forgetPassword } from "@/actions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { TForgetPasswordFormValidationsSchema } from "@/types";
+import { RoutesPage, TForgetPasswordFormValidationsSchema } from "@/types";
 import { forgetPasswordFormValidationsSchema } from "@/lib";
 import { showToast } from "../CustomToast";
 
@@ -22,7 +21,6 @@ export const ForgetPasswordForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset,
   } = useForm<TForgetPasswordFormValidationsSchema>({
     resolver: zodResolver(forgetPasswordFormValidationsSchema),
   });
@@ -81,7 +79,7 @@ export const ForgetPasswordForm: React.FC = () => {
               disabled={isSubmitting}
               color="primary"
               type="submit"
-              className="w-full mt-5 mb-5"
+              className="w-full mt-5 mb-5 text-white"
             >
               Enviar
             </Button>
@@ -96,7 +94,7 @@ export const ForgetPasswordForm: React.FC = () => {
         </div>
         <NextUIButton
           className="border-2 border-slate-300 w-full"
-          href="/login"
+          href={RoutesPage.LOGIN}
           as={Link}
         >
           Iniciar sesión

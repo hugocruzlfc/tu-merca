@@ -7,18 +7,19 @@ import {
   CardFooter,
   Divider,
   Link,
-  Button,
+  Button as NextUIButton,
 } from "@nextui-org/react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { loginFormValidationsSchema } from "@/lib";
-import { TLoginFormValidationsSchema } from "@/types";
+import { RoutesPage, TLoginFormValidationsSchema } from "@/types";
 import { Eye, EyeOff } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@nextui-org/react";
 import { showToast } from "@/components";
 import LinkNext from "next/link";
+import { Button } from "../UI";
 
 export const LoginForm: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -46,7 +47,7 @@ export const LoginForm: React.FC = () => {
       showToast({ type: "error", message: result.error });
     } else {
       reset();
-      router.push("/");
+      router.push(RoutesPage.HOME);
       router.refresh();
     }
   };
@@ -105,7 +106,7 @@ export const LoginForm: React.FC = () => {
             </div>
             <div className="flex flex-row-reverse text-xs">
               <LinkNext
-                href={"/forget-password"}
+                href={RoutesPage.FORGET_PASSWORD}
                 className="text-blue-500 hover:underline cursor-pointer hover:text-blue-400 ml-1"
               >
                 ¿Olvidaste la contraseña?
@@ -116,7 +117,7 @@ export const LoginForm: React.FC = () => {
               disabled={isSubmitting}
               color="primary"
               type="submit"
-              className="w-full mt-5 mb-5"
+              className="w-full mt-5 mb-5 text-white"
             >
               Continuar
             </Button>
@@ -143,13 +144,13 @@ export const LoginForm: React.FC = () => {
           <p className="mx-5">¿Eres nuevo?</p>
           <Divider className="w-4/12" />
         </div>
-        <Button
+        <NextUIButton
           className="border-2 border-slate-300 w-full"
-          href="/register"
+          href={RoutesPage.REGISTER}
           as={Link}
         >
           Crea tu cuenta de TuMerca
-        </Button>
+        </NextUIButton>
       </section>
     </>
   );

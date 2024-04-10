@@ -18,3 +18,15 @@ export const registerFormValidationsSchema = z.object({
 export const forgetPasswordFormValidationsSchema = z.object({
   email: z.string().email({ message: "Correo elctrónico no válido!" }),
 });
+
+export const updatePasswordFormValidationsSchema = loginFormValidationsSchema
+  .extend({
+    confirmPassword: z
+      .string()
+      .min(5, "La contraseña debe tener al menos 5 caracteres!"),
+    token: z.string().optional(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Las contraseñas no coinciden!",
+    path: ["confirmPassword"],
+  });

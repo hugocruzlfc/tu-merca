@@ -4,6 +4,7 @@ import { prisma } from "@/lib";
 import { registerFormValidationsSchema } from "@/lib";
 import { redirect } from "next/navigation";
 import { hash } from "bcryptjs";
+import { RoutesPage } from "@/types";
 
 export async function createUser(formData: FormData) {
   const values = Object.fromEntries(formData.entries());
@@ -22,6 +23,6 @@ export async function createUser(formData: FormData) {
   });
 
   if (result) {
-    redirect("/login");
+    redirect(RoutesPage.LOGIN);
   }
 }

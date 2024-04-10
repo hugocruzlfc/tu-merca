@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import {
-  Button,
+  Button as NextUIButton,
   Card,
   CardBody,
   CardFooter,
@@ -16,6 +16,7 @@ import { TRegisterFormValidationsSchema } from "@/types";
 import { Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "../UI";
 
 export const RegisterForm: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -117,9 +118,9 @@ export const RegisterForm: React.FC = () => {
               disabled={isSubmitting}
               color="primary"
               type="submit"
-              className="w-full mt-5 mb-5"
+              className="w-full mt-5 mb-5 text-white"
             >
-              Continuar
+              Registrarme
             </Button>
           </form>
         </CardBody>
@@ -143,13 +144,13 @@ export const RegisterForm: React.FC = () => {
         <p className="mx-5">¿Ya tienes una cuenta?</p>
         <Divider className="w-3/12" />
       </div>
-      <Button
+      <NextUIButton
         className="border-2 border-slate-300 w-full"
         href="/login"
         as={Link}
       >
         Iniciar sesión
-      </Button>
+      </NextUIButton>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Brand, RegisterForm } from "@/components";
+import { RegisterForm } from "@/components";
 import { NextPage } from "next";
 
 import type { Metadata } from "next";
