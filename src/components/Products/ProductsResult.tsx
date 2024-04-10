@@ -1,9 +1,9 @@
 import React from "react";
 import { prisma } from "@/lib";
 import Link from "next/link";
-import { ProductsList } from "../ProductsList";
+import { ProductsList } from "./ProductsList";
 import { buildFilters } from "@/utils";
-import { ProductsNotFound } from "../ProductsNotFound";
+import { ProductsNotFound } from "./ProductsNotFound";
 import Pagination from "../Pagination";
 import { ProductFilterValues } from "@/types";
 

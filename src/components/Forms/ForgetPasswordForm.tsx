@@ -9,18 +9,15 @@ import {
   Link,
 } from "@nextui-org/react";
 import React from "react";
-import { Button } from "./UI";
-import { FormSubmitButton } from "./Buttons/FormSubmitButton";
+import { Button } from "../UI";
 import { forgetPassword } from "@/actions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TForgetPasswordFormValidationsSchema } from "@/types";
 import { forgetPasswordFormValidationsSchema } from "@/lib";
-import { showToast } from "./CustomToast";
+import { showToast } from "../CustomToast";
 
-export interface ForgetPasswordProps {}
-
-export const ForgetPassword: React.FC<ForgetPasswordProps> = ({}) => {
+export const ForgetPasswordForm: React.FC = () => {
   const {
     register,
     handleSubmit,
