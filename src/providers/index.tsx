@@ -1,8 +1,6 @@
 "use client";
-import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider } from "next-themes";
 import { Theme } from "@radix-ui/themes";
-import "@radix-ui/themes/styles.css";
 import { useRouter } from "next/navigation";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
