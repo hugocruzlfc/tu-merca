@@ -1,6 +1,5 @@
+import { LoginForm } from "@/components";
 import { NextPage } from "next";
-import { Brand } from "@/components";
-import { LoginForm } from "@/components/Forms";
 
 import type { Metadata } from "next";
 

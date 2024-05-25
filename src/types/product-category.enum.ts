@@ -14,7 +14,7 @@ export enum ProductCategory {
   MASCOTAS = "Mascotas",
   PRODUCTOS_BEBES = "Productos para Bebés",
   RELOJES_JOYAS = "Relojes y Joyas",
-  ROPA_CALZADO_COMPLEMENTOS = "Ropa, Calzado y Complementos",
+  ROPA_CALZADO = "Ropa y Calzado",
   TELOFIONIA = "Telefonía",
   VEHICULOS_ACCESORIOS = "Vehículos y Accesorios",
 }

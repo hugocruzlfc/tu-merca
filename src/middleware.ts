@@ -1,8 +1,9 @@
 export { default } from "next-auth/middleware";
 
 export const config = {
-  // matcher: [
-  //   "/((?!$|register|api|login|_next/static|_next/image|assets|favicon.ico|logo.png|sw.js).*)",
-  // ],
-  matcher: ["/(admin|profile|checkout)(.*)"],
+  matcher: [
+    "/((?!$|register|api|login|forget-password|update-password|_next/static|_next/image|assets|favicon.ico|logo.png|sw.js).*)",
+  ],
 };
+
+// todo: products

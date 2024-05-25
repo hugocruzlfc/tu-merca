@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -44,6 +45,7 @@ model Product {
   price       Float
   picture     String?
   category    String
+  location    String
   ownerId     String
   approved    Boolean  @default(false)
   createdAt   DateTime @default(now())

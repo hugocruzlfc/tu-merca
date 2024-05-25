@@ -25,7 +25,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
     >
-      <body className={inter.className}>
+      <body className={`${inter.className} min-w-[350px]`}>
         <Providers>
           <NavBar />
           {children}
