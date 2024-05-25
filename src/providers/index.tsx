@@ -1,6 +1,8 @@
 "use client";
 import { NextUIProvider } from "@nextui-org/react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ThemeProvider } from "next-themes";
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 import { useRouter } from "next/navigation";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
@@ -10,19 +12,19 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <SessionProvider>
-      <NextUIProvider navigate={router.push}>
-        <NextThemesProvider
-          attribute="class"
-          enableSystem={false}
-        >
+      <ThemeProvider
+        attribute="class"
+        // enableSystem={false}
+      >
+        <Theme>
           <Toaster
             position="top-right"
             reverseOrder={false}
           />
 
           {children}
-        </NextThemesProvider>
-      </NextUIProvider>
+        </Theme>
+      </ThemeProvider>
     </SessionProvider>
   );
 }

@@ -21,27 +21,7 @@ const config: Config = {
     },
   },
   darkMode: "class",
-  plugins: [
-    nextui({
-      addCommonColors: true,
-      themes: {
-        light: {
-          colors: {
-            primary: "#FFA500",
-            secondary: "#050404",
-            default: "transparent",
-          },
-        },
-        dark: {
-          colors: {
-            primary: "#FFA500",
-            secondary: "#FCF9F9",
-            default: "transparent",
-          },
-        },
-      },
-    }),
-  ],
+  plugins: [],
 };
 
 export default config;
