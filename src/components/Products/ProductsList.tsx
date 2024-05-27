@@ -4,7 +4,7 @@ import { Product } from "@prisma/client";
 import productPlaceHolder from "@/assets/placeholders/no-product-600x400.png";
 import Image from "next/image";
 import { Banknote, MapPin } from "lucide-react";
-import { Card, Box } from "@radix-ui/themes";
+import { Card, Box, Text } from "@radix-ui/themes";
 
 export interface ProductsListProps {
   product: Product;
@@ -18,8 +18,8 @@ export const ProductsList: React.FC<ProductsListProps> = ({ product }) => {
         <div className="flex md:justify-between flex-col md:flex-row flex-wrap mb-2">
           <b className="text-xs md:text-sm">{name}</b>
           <div className="rounded-full border px-2 py-1 border-primary">
-            <p className="text-xs text-preferredColor text-center">
-              {category}
+            <p className="text-xs text-center">
+              <Text color="orange">{category}</Text>
             </p>
           </div>
         </div>

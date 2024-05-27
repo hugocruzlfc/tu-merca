@@ -1,32 +1,32 @@
+"use client";
 import { useTheme } from "next-themes";
 import { Flex, IconButton } from "@radix-ui/themes";
-import { Moon, SunMedium } from "lucide-react";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
 export function ThemeSwitcher() {
-  const { resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   const handleOnChange = () => {
-    if (resolvedTheme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
     <Flex>
       <IconButton
-        variant="ghost"
         size="1"
         color="orange"
         onClick={handleOnChange}
       >
-        {resolvedTheme === "dark" ? (
-          <Moon color="#FFA500" />
+        {theme === "light" ? (
+          <SunIcon
+            width="26px"
+            height="26px"
+            color="orange"
+          />
         ) : (
-          <SunMedium
-            color="#FFA500"
-            size={26}
+          <MoonIcon
+            width="26px"
+            height="26px"
           />
         )}
       </IconButton>
