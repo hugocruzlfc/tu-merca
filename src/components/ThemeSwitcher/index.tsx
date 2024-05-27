@@ -1,48 +1,35 @@
 "use client";
 import { useTheme } from "next-themes";
-import { Switch } from "@nextui-org/react";
-import { MoonIcon } from "../Icons/MoonIcon";
-import { SunIcon } from "../Icons/SunIcon";
-import { useEffect, useState } from "react";
+import { Flex, IconButton } from "@radix-ui/themes";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
 export function ThemeSwitcher() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const checked = event.target.checked;
-
-    if (checked) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+  const handleOnChange = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
-    <div className="flex gap-4 items-center">
-      <Switch
-        className="rounded-full border-slate-300 border-1 bg-slate-50"
-        defaultSelected={resolvedTheme === "dark"}
-        size="md"
-        color="primary"
-        onChange={handleOnChange}
-        thumbIcon={({ isSelected, className }) =>
-          isSelected ? (
-            <SunIcon className={className} />
-          ) : (
-            <MoonIcon className={className} />
-          )
-        }
-      ></Switch>
-    </div>
+    <Flex>
+      <IconButton
+        size="1"
+        color="orange"
+        onClick={handleOnChange}
+      >
+        {theme === "light" ? (
+          <SunIcon
+            width="26px"
+            height="26px"
+            color="orange"
+          />
+        ) : (
+          <MoonIcon
+            width="26px"
+            height="26px"
+          />
+        )}
+      </IconButton>
+    </Flex>
   );
 }
